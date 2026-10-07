@@ -1,0 +1,28 @@
+name: Run A Python Application
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show Python Version
+        run: python --version
+
+      - name: Show Git Version
+        run: git --version
+
+      - name: Show Files
+        run: ls -liha
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+            python-version: "3.12"
+      - name: Run Application
+        run: python app.py
+
